@@ -65,7 +65,7 @@ readExcelFile(process.env.SHEET_PATH, async (products, options) => {
           regular_price: product.price.toFixed(2),
           price: product.price.toFixed(2),
           sale_price: product.price.toFixed(2),
-          description: formatDescription(sameItemProducts.find((product) => product.description).description ?? ""),
+          description: product.description.toString() ?? "",
           on_sale: true,
           purchasable: true,
           stock_quantity: !stock || isNaN(stock) || typeof stock !== 'number' ? 0 : stock,
