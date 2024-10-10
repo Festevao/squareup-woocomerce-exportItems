@@ -7,8 +7,8 @@ import { WooCommerceProduct } from 'types/wooCommerceProduct';
 readExcelFile(process.env.SHEET_PATH, async (products, options) => {
   const squareupImagesUrl = await crawlStore();
 
-  const startIn = 15;
-  const maxIteration = 15;
+  const startIn = isNaN(parseInt(process.env.SKIP_PRODUCTS)) ? 0 : parseInt(process.env.SKIP_PRODUCTS);
+  const maxIteration = isNaN(parseInt(process.env.MAX_PRODUCTS)) ? Infinity : startIn + parseInt(process.env.MAX_PRODUCTS);
   let iteration = 0;
   
   while (products.length > 0) {
